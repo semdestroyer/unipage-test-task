@@ -22,6 +22,4 @@ $conn = array(
     'driver' => 'pdo_mysql',
 
 );
-
-// obtaining the entity manager
 $entityManager = EntityManager::create($conn, $config);
