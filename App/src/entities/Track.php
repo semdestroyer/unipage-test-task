@@ -19,9 +19,53 @@ class Track
     private $id;
 
     /**
+     * @return mixed
+     */
+    public function getPublicationTime()
+    {
+        return $this->publication_time;
+    }
+
+    /**
+     * @param mixed $publication_time
+     */
+    public function setPublicationTime($publication_time): void
+    {
+        $this->publication_time = $publication_time;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDuration(): string
+    {
+        return $this->duration;
+    }
+
+    /**
+     * @param string $duration
+     */
+    public function setDuration(string $duration): void
+    {
+        $this->duration = $duration;
+    }
+
+    /**
      * @ORM\ManyToOne(targetEntity="App\src\entities\Artist", inversedBy="track")
      */
     private $artist;
+
+    /**
+     * @ORM\Column(type="string")
+     * @var string
+     */
+    private $duration;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $publication_time;
+
 
 
     /**
@@ -43,7 +87,7 @@ class Track
     /**
      * @return string
      */
-    public function getArtist(): string
+    public function getArtist(): Artist
     {
         return $this->artist;
     }
@@ -51,7 +95,7 @@ class Track
     /**
      * @param string $artist
      */
-    public function setArtist(string $artist): void
+    public function setArtist(Artist $artist): void
     {
         $this->artist = $artist;
     }

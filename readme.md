@@ -1,10 +1,19 @@
 # Soundcloud parser
 ---
-Mysql упакован в docker: 
+composer install
 
-docker-compose up 
+Mysql упакован в docker-compose и находится на 3312 порту: 
 
+`docker-compose up`
 
-Накатить бд:
+Для начала надо накатить миграции:
+`./vendor/bin/doctrine-migrations migrate`
 
-vendor/bin/doctrine orm:schema-tool:create
+Чтобы запустить парсер:`php index.php <Имя исполнителя>`
+
+(например если https://soundcloud.com/aljoshakonstanty, то имя aljoshakonstanty)
+
+---
+Парсер парсит только, то что выдает curl, а из-за наличия js и всяких подгрузок он выводит не всё 
+
+Для полного парсинга soundcloud надо использовать puppeteer и node.js 
